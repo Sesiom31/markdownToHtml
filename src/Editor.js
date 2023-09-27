@@ -1,18 +1,13 @@
-import React, { useRef } from 'react'
-import Header from './Header'
+import React from "react";
+import Header from "./Header";
 
-function Editor({}) {
-
-  const textRef = useRef(null)
-  
-
-  
+function Editor({ onStateEditor, stateEditor }) {
   return (
-    <div className='container-editor'>
-      <Header isExpande={true} title='Editor'  />
-      <textarea ref={textRef} id='editor' onMouseOver={()=>textRef.current.style = 'red'} ></textarea>
+    <div className="container-editor">
+      <Header onStateEditor={onStateEditor} state={stateEditor} />
+      <textarea id="editor"></textarea>
     </div>
-  )
+  );
 }
 
-export default Editor
+export default Editor;

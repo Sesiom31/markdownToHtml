@@ -5,16 +5,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Header({ isExpande, title }) {
+function Header({onStateEditor, stateEditor}) {
+  let isExpande = true;
+
+  const handleClick = ()=>{
+    if(stateEditor === 'normal') onStateEditor('maxim')
+    if(stateEditor === 'maxim') onStateEditor('normal')
+    if(stateEditor === 'hidden') onStateEditor('')
+  }
+
   return (
     <div className="header-modal">
       <div className="datos-modal">
         <div className="icon">
           <FontAwesomeIcon icon={faHandshake} />
         </div>
-        <h3 className="name-modal">{title}</h3>
+        <h3 className="name-modal">{"Free"}</h3>
       </div>
-      <button type="button" className="btn-modal">
+      <button type="button" className="btn-modal" onClick={handleClick}>
         {isExpande ? (
           <FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} />
         ) : (

@@ -1,12 +1,13 @@
 *{
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-  margin: 0;
   font-family:'Courier New', Courier, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #42a8a1;
 }
 
 code {
