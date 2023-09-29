@@ -5,14 +5,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Header({onStateEditor, stateEditor}) {
-  let isExpande = true;
-
-  const handleClick = ()=>{
-    if(stateEditor === 'normal') onStateEditor('maxim')
-    if(stateEditor === 'maxim') onStateEditor('normal')
-    if(stateEditor === 'hidden') onStateEditor('')
-  }
+function Header({ onState, stateView, title }) {
+  const handleClick = () => {
+    if (stateView === "normal") onState("maxim");
+    if (stateView === "maxim") onState("normal");
+  };
 
   return (
     <div className="header-modal">
@@ -20,10 +17,10 @@ function Header({onStateEditor, stateEditor}) {
         <div className="icon">
           <FontAwesomeIcon icon={faHandshake} />
         </div>
-        <h3 className="name-modal">{"Free"}</h3>
+        <h3 className="name-modal">{title}</h3>
       </div>
       <button type="button" className="btn-modal" onClick={handleClick}>
-        {isExpande ? (
+        {stateView === "maxim" ? (
           <FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} />
         ) : (
           <FontAwesomeIcon icon={faMaximize} />
