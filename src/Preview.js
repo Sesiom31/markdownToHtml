@@ -10,7 +10,18 @@ function Preview({ onStatePreview, statePreview, text }) {
     Prism.highlightAll();
   }, [text]);
 
-  const sanitizedHTML = DOMPurify.sanitize(text);
+  function preserveCode(html) {
+    let result = ''
+    html.split(/(<pre>[\s\S]*?<\/pre>)/g).map((line) => {
+      return line.startsWith("<pre")
+        ? (result += line)
+        : (result += line.replace(/\r\n/g, "<br />"));
+    });
+
+    return result
+  }
+
+  const sanitizedHTML = DOMPurify.sanitize(preserveCode(text));
 
   return (
     <div className={`container-preview ${statePreview === "maxim" && "maxim"}`}>
